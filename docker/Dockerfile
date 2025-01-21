@@ -85,12 +85,13 @@ RUN set -eux ; \
 RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing/ pandoc
 
 
-RUN git clone https://github.com/outofcontrol/mediawiki-to-gfm.git ; \
-    cd mediawiki-to-gfm ; \
-    composer update --no-dev ; \
+#RUN git clone https://github.com/outofcontrol/mediawiki-to-gfm.git ; \
+WORKDIR /usr/local/mediawiki-to-gfm
+ADD . .
+RUN composer update --no-dev && \
     ln -s $(pwd)/convert.php /usr/bin
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /app
 
