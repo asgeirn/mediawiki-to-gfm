@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request_target:
-    branches: [master]
+    branches: [main]
     types:
       - closed
 
