@@ -12,9 +12,8 @@ jobs:
       - uses: php-actions/composer@v6
 
       - name: PHPUnit Tests
-        uses: shivammathur/setup-php@v2
+        uses: php-actions/phpunit@v3
         with:
-          php-version: '8.4'
-          tools: phpunit
-        env:
-          debug: true
+          php_version: '8.4'
+          bootstrap: vendor/autoload.php
+          configuration: phpunit.xml
