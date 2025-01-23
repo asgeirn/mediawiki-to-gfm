@@ -16,3 +16,5 @@ jobs:
           php_version: '8.1'
           bootstrap: vendor/autoload.php
           configuration: phpunit.xml
+          log_junit: junit.xml
+          args: --display-warnings
