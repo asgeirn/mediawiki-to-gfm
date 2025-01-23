@@ -93,7 +93,7 @@ class ConvertTest extends TestCase
 
         // Test with add_meta disabled
         $this->convert->setOption('addmeta', ['addmeta' => null]);
-        $metadata = $this->convert->getMetaData($options);
+        $metadata = $this->convert->getMetaData($options, '');
         $this->assertEquals('', $metadata);
 
         // Test with add_meta enabled
