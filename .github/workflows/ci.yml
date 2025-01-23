@@ -11,7 +11,7 @@ jobs:
 
       - uses: php-actions/composer@v6
 
-      - uses: php-actions/phpunit@v3
+      - uses: php-actions/phpunit@v4
         with:
           php_version: '8.4'
           bootstrap: vendor/autoload.php
