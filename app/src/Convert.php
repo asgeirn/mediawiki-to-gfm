@@ -143,11 +143,12 @@ class Convert
         foreach ($this->dataToConvert as $node) {
             $fileMeta = $this->retrieveFileInfo($node->xpath('title'));
             $text = $node->xpath('revision/text');
+            $timestamp = $node->xpath('revision/timestamp');
             $text = $this->cleanText($text[0], $fileMeta);
 
             try {
                 $text = $this->runPandoc($text);
-                $output = $this->getMetaData($fileMeta) . $text;
+                $output = $this->getMetaData($fileMeta, $timestamp) . $text;
                 $this->saveFile($fileMeta, $output);
                 $this->counter++;
             } catch (PandocException $e) {
@@ -315,10 +316,10 @@ class Convert
      * @param array $fileMeta File Title and URL
      * @return string Page body with meta data added
      */
-    public function getMetaData($fileMeta)
+    public function getMetaData($fileMeta, $timestamp)
     {
         return ($this->addmeta)
-            ? sprintf("---\ntitle: %s\npermalink: /%s/\n---\n\n", $fileMeta['title'], $fileMeta['url'])
+            ? sprintf("---\ntitle: %s\npermalink: /%s/\ndate: %s\n---\n\n", $fileMeta['title'], $fileMeta['url'], $timestamp)
             : '';
     }
 
