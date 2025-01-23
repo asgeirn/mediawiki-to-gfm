@@ -98,8 +98,8 @@ class ConvertTest extends TestCase
 
         // Test with add_meta enabled
         $this->convert->setOption('addmeta', ['addmeta' => true]);
-        $metadata = $this->convert->getMetaData($options);
-        $this->assertEquals($metadata, "---\ntitle: My file title\npermalink: //my/url/\n---\n\n");
+        $metadata = $this->convert->getMetaData($options, '2016-11-10T21:37:26Z');
+        $this->assertEquals($metadata, "---\ntitle: My file title\npermalink: //my/url/\ndate: 2016-11-10T21:37:26Z\n---\n\n");
     }
 
     public function test_cleantext_normalizes_path()
