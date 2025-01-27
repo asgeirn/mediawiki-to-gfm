@@ -148,7 +148,7 @@ class Convert
 
             try {
                 $text = $this->runPandoc($text);
-                $output = $this->getMetaData($fileMeta, $timestamp) . $text;
+                $output = $this->getMetaData($fileMeta, $timestamp[0]) . $text;
                 $this->saveFile($fileMeta, $output);
                 $this->counter++;
             } catch (PandocException $e) {
